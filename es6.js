@@ -5,7 +5,8 @@ export class SelectorResolver {
 
     doResolveByCond(selector, resolveCond) {
         return new Promise((resolve, reject) => {
-            if(!resolveCond) { reject(new Error("resolveCond is not a function.")); }
+            if(!resolveCond) { reject(new Error("resolveCond is undefined.")); }
+            if(!( typeof resolveCond === typeof function(){} )) { reject(new Error("resolveCond is not a function.")); }
 
             let elem = null
             , intervalCnt = 0
