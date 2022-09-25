@@ -1,4 +1,4 @@
-function resolveSelectorByCond(selector, intervalRepeatMax, intervalMarginMilSec) {
+function resolveSelectorByCond(selector, cond, intervalRepeatMax, intervalMarginMilSec) {
     return new Promise(function(resolve, reject) {
         var _elem = null
         , _intervalCnt = 0
@@ -12,7 +12,7 @@ function resolveSelectorByCond(selector, intervalRepeatMax, intervalMarginMilSec
 
             _elem = document.querySelector(selector);
 
-            if(_elem) {
+            if(cond(_elem)) {
                 clearInterval(_interval);
                 resolve({
                     elem: _elem
